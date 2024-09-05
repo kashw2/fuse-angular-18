@@ -10,12 +10,12 @@
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-@include mat.all-legacy-component-typographies();
-@include mat.legacy-core();
+@include mat.all-component-typographies();
+@include mat.core();
 
 /* Create a base theme without color.
     This will globally set the density and typography for all future color themes. */
-@include mat.all-legacy-component-themes((
+@include mat.all-component-themes((
     color: null,
     density: -2,
     typography: mat.define-legacy-typography-config(
@@ -118,7 +118,7 @@ body .light {
     );
 
     /* Use all-component-colors to only generate the colors */
-    @include mat.all-legacy-component-colors($light-theme);
+    @include mat.all-component-colors($light-theme);
 }
 
 body.dark,
@@ -172,5 +172,5 @@ body .dark {
     );
 
     /* Use all-component-colors to only generate the colors */
-    @include mat.all-legacy-component-colors($dark-theme);
+    @include mat.all-component-colors($dark-theme);
 }
