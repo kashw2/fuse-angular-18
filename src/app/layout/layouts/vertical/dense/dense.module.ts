@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,13 +18,12 @@ import { DenseLayoutComponent } from 'app/layout/layouts/vertical/dense/dense.co
 import { MatButtonModule } from "@angular/material/button";
 import { MatMenuModule } from "@angular/material/menu";
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         DenseLayoutComponent
     ],
-    imports     : [
-        HttpClientModule,
-        RouterModule,
+    exports: [
+        DenseLayoutComponent
+    ], imports: [RouterModule,
         MatButtonModule,
         MatDividerModule,
         MatIconModule,
@@ -39,12 +38,7 @@ import { MatMenuModule } from "@angular/material/menu";
         SearchModule,
         ShortcutsModule,
         UserModule,
-        SharedModule
-    ],
-    exports     : [
-        DenseLayoutComponent
-    ]
-})
+        SharedModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class DenseLayoutModule
 {
 }

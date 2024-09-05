@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,13 +17,12 @@ import { MaterialLayoutComponent } from 'app/layout/layouts/horizontal/material/
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         MaterialLayoutComponent
     ],
-    imports     : [
-        HttpClientModule,
-        RouterModule,
+    exports: [
+        MaterialLayoutComponent
+    ], imports: [RouterModule,
         MatButtonModule,
         MatDividerModule,
         MatIconModule,
@@ -37,12 +36,7 @@ import {MatMenuModule} from "@angular/material/menu";
         SearchModule,
         ShortcutsModule,
         UserModule,
-        SharedModule
-    ],
-    exports     : [
-        MaterialLayoutComponent
-    ]
-})
+        SharedModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class MaterialLayoutModule
 {
 }
